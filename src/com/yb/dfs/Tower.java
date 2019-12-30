@@ -1,7 +1,5 @@
 package com.yb.dfs;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -51,8 +49,6 @@ public class Tower {
     static int maxRoomArea = 0;        //最大房间面积
 
     static int minRoomArea = 100;     //最小房间面积
-
-    static List<String> pathList = new ArrayList<>();       //数组记录每条路径
 
     static int west = 1;        //1表示西墙
     static int north = 2;       //2表示北墙
