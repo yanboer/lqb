@@ -44,7 +44,13 @@ public class Tower {
 
     static boolean[][] color;       //标记房间
 
-    static String path = "";        //路径
+    static int roomNumber = 0;      //房间数量  ===》房间个数
+
+    static int currentRoomArea = 0;        //当前房间面积
+
+    static int maxRoomArea = 0;        //最大房间面积
+
+    static int minRoomArea = 100;     //最小房间面积
 
     static List<String> pathList = new ArrayList<>();       //数组记录每条路径
 
@@ -79,40 +85,47 @@ public class Tower {
             System.out.println();
         }
 
-        dfs(maze,0,0);
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (color[i][j] == false) {
+                    roomNumber++;       //房间个数 + 1
+                    currentRoomArea = 0;       //每次开始时房间个数均为0
+                    dfs(maze, i, j);
+                    maxRoomArea = Math.max(maxRoomArea,currentRoomArea);        //最大房间面积
+                    minRoomArea = Math.min(minRoomArea,currentRoomArea);        //最小房间面积
+                }
+            }
+        }
+        System.out.println("房间数 = " + roomNumber);
+        System.out.println("最大房间个数 = " + maxRoomArea);
+        System.out.println("最小房间个数 = " + minRoomArea);
+
 
     }
 
     private static void dfs(int[][] maze,int x,int y) {
-        if (x < 0 || x > maze.length || y < 0 || y > maze[0].length){       //越界
+        if (x < 0 || x > maze.length - 1 || y < 0 || y > maze[0].length - 1){       //越界
             return;
         }
+        if (color[x][y] == true){       //访问过就直接退出
+            return;
+        }
+        color[x][y] = true;     //标记该元素
 
-        String tempPath = path;
-        color[x][y] = true;     //标记该房间
-        path += "(" + x + "," + y + ")" + "->";      //路径拼凑
-
+        currentRoomArea++;
 
         if ((maze[x][y] & west) == 0){      //没有西墙
-            dfs(maze,x - 1,y);      //继续向西深搜
+            dfs(maze,x,y - 1);      //继续向西深搜
         }
         if ((maze[x][y] & north) == 0 ){     //没有北墙
-            dfs(maze,x,y - 1);      //继续向北深搜
+            dfs(maze,x - 1,y);      //继续向北深搜
         }
         if ((maze[x][y] & east) == 0 ){     //没有东墙
-            dfs(maze,x + 1,y);      //继续向东深搜
+            dfs(maze,x,y + 1);      //继续向东深搜
         }
-        if ((maze[x][y] & sourth) == 0 ){     //没有东墙
-            dfs(maze,x,y + 1);      //继续向南深搜
+        if ((maze[x][y] & sourth) == 0 ){     //没有南墙
+            dfs(maze,x + 1,y);      //继续向南深搜
         }
-
-        if (){
-
-        }
-
-        //回溯
-        color[x][y] = false;        //标记回溯
-        path = tempPath;            //路径回溯
 
     }
 }
