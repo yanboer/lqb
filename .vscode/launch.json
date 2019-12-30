@@ -1,0 +1,40 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Cousuanshi",
+            "request": "launch",
+            "mainClass": "Cousuanshi"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Circle",
+            "request": "launch",
+            "mainClass": "Circle"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Demo05",
+            "request": "launch",
+            "mainClass": "Demo05"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Test",
+            "request": "launch",
+            "mainClass": "Test"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Demo03",
+            "request": "launch",
+            "mainClass": "Demo03"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Demo01",
+            "request": "launch",
+            "mainClass": "Demo01"
+        }
+    ]
+}
